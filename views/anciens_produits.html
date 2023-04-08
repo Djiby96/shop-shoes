@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/logo/logo_navbar.jpg" type="image/svg">
+    <title>produits expirés</title>
+
+     <!-- boostrap css -->
+    <link rel="stylesheet" href="/bootstrap-css-4.5.0/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/fontawesome_5.15.4/css/all.css">
+
+    <!-- my-templates-css -->
+    <link rel="stylesheet" href="/my-templates-css/globalCss.css">
+
+    <!-- my-css -->
+    <link rel="stylesheet" href="/my-css/anciens_produits.css">
+
+    <!-- media-querie -->
+    <link rel="stylesheet" href="/media-querie/mq_anciens_produits.css">
+</head>
+<body class="bg-light">
+    <!-- navbar -->
+    <header>
+        <%- include("./navbar_admin.html") %>
+    </header>
+
+    <section class="mt-5" style="margin-bottom: 10rem;">
+        <!-- no empty -->
+        <div class="column-center">
+            <p class="m-w-85 fs-075 text-muted" style="width: 50rem;">
+                Les produits ci-dessous ont atteint leur date limite de stockage et sont en expiration. 
+                Nous vous conseillons d’ajouter encore sur le site ceux qui sont toujours en stock dans votre magasins avant la fin du mois ce qui les permettra d’avoir une date récente et de s’afficher toujours sur le site. <br><br>
+
+                APRES AVOIR TERMINE, vous pouvez cliquez sur le bouton désactiver pour désactiver ces anciens produits.
+
+                <p class="text-muted fs-075 f-w-b mx-3">
+                    <span class="text-primary">NB : </span> 
+                    Nous vous conseillons de consulter cette page chaque semaine pour regarder les produits expirés et de les remettre sur le site avant la fin du mois.
+                </p>
+            </p>
+            <div class="center mb-3">
+                <a href="" class="link_product bx-s-2 br-06 border t-d-n m-2 m-lg-3 hover-bx-s-10 bg-white" title="">
+                    <img src="/product/image_0.jpeg" class="img_product w-100 rounded" alt="">
+                    <div class="title_product cl-black text-center fs-08 mt-2 mb-3 px-3 op-08">
+                        Chaussures Basket 
+                    </div>
+                    <h5 class="price_product f-w-b fs-09 text-shadow-1 text-center cl-purple">
+                        15 000 F CFA
+                    </h5>
+                </a>
+            </div>
+
+            <!-- pagination : 8 affichage -->
+            <div class="mb-5">
+                <%- include("./pagination.html") %>
+            </div>
+
+            <div class="center">
+                <button type="button" class="py-2 px-3 br-06 fs-08 bg-danger text-white bx-s-10 border-0">
+                    Desactiver ces 8 produits 
+                </button>
+            </div>
+        </div>
+
+        <!-- empty -->
+    </section>
+
+
+    
+</body>
+</html>

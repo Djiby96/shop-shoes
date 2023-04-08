@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/logo/logo_navbar.jpg" type="image/svg">
+    <title>Ajouter une vente</title>
+
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="/bootstrap-css-4.5.0/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/fontawesome_5.15.4/css/all.css">
+
+    <!-- my-templates-css -->
+    <link rel="stylesheet" href="/my-templates-css/globalCss.css">
+
+    <!-- my-css -->
+    <link rel="stylesheet" href="/my-css/ajouter_produit.css">
+
+    <!-- my-js -->
+    <script defer src="/my-js/ajouter_produit.js"></script>
+    <script defer src="/my-js/listenFlashMessage.js"></script>
+</head>
+<body class="bg-light">
+
+    <!-- Nav admin -->
+    <header>
+        <%- include("./navbar_admin.html") %>
+    </header>
+
+    <!-- form -->
+    <section class="center my-5 ">
+
+        <div class="bx-s-10 bg-white pt-3 px-4 pb-5 br-07 width-30 m-w-95">
+            <div class="column-center mb-3">
+                <img src="/website/black_shoes.png" class="width-4 height-4" alt="">
+                <div class="cl-black text-shadow-1 fs-095">Remplir les informations du produit</div>
+            </div>
+
+            <!-- message alert -->
+            <div class="center">
+                <div class="mb-3 alert alert-success fs-09 px-3 d-none" message="<%-locals.message%>" id="message_alert">
+                </div>
+            </div>
+
+            <form action="/espace-admin/ajouter-produit" method="post" enctype="multipart/form-data">
+                <div class="column-center mb-4 mt-3">
+                    <button type="button" class="rounded bx-s-2 bg-greened py-2 px-3 br-06 border-0 mb-1" id="button_img">
+                        <i class="fas fa-camera text-white"></i>
+                        <input type="file" name="files" id="input_file" class="d-none" multiple accept="image/*" required>
+                    </button>
+                    <div class="fs-095 op-06 fs-08 mb-2" id="text_imgs">Cliquez sur ce bouton choisir les photos</div>
+                    <div id="text_imgs_select" class="f-w-b fs-085 cl-greened"></div>
+                </div>
+
+                <div class="text-muted fs-08">Categorie personne<span class="text-danger f-w-b">*</span></div>
+                <select name="genre" class="form-control mb-2 w-100 fs-085" style="height: 2.5rem;" id="categorie_personne" required>
+                    <option value="" class="text-center">categorie personne</option>
+                    <option value="homme" class="text-center">homme</option>
+                    <option value="femme" class="text-center">femme</option>
+                    <option value="homme-femme" class="text-center">homme & femme</option>
+                    <option value="enfant-bebe" class="text-center">enfant & bebe</option>
+                </select>
+
+                <div class="text-muted fs-08">Categorie vente<span class="text-danger f-w-b">*</span></div>
+                <select name="categorie" class="form-control mb-2 w-100 fs-08" style="height: 2.5rem;" id="categorie_vente" required>
+                    <option value="" class="text-center">categorie vente</option>
+                    <option value="chaussures" class="text-center">chaussures</option>
+                    <option value="accessoires" class="text-center">accessoires</option>
+                </select>
+
+                <div class="my-3" id="container_type">
+
+                </div>
+
+                <div class="text-muted fs-08">Titre<span class="text-danger f-w-b">*</span></div>
+                <input type="text" name="titre" class="form-control out-n fs-095 ls-05 p-1 w-100 mb-2" style="height: 2.5rem;" maxlength="60" required>
+
+                <div class="text-muted fs-08">Prix</div>
+                <input type="number" name="prix" min="0" class="form-control out-n fs-095 ls-05 p-1 w-100 mb-4" style="height: 2.5rem;">
+
+                <div class="text-muted fs-08">Description<span class="text-danger f-w-b">*</span></div>
+                <textarea name="description" class="form-control out-n fs-09 ls-05 p-2 w-100 mb-3" placeholder="description donnant plus d'informations important aux clients ..." cols="30" rows="10" required></textarea>
+
+                <div class="center">
+                    <button type="submit" class="fs-095 cl-white br-07 bg-primary py-2 px-3 width-11">
+                        <i class="fas fa-paper-plane"></i>
+                        Soumettre
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--Elements type de chaussures et accessoires  -->
+    <section class="d-none">
+        <div id="type_chaussures">
+            <div class="text-muted fs-08 ml-3">type chaussures<span class="text-danger f-w-b">*</span></div>
+            <select name="type" class="form-control mb-2 w-100 fs-08" style="height: 2.5rem;" id="type_chaussures_select" required>
+                <option value="" class="text-center">type de chaussures</option>
+                <option value="basket-sport" class="text-center">basket/sport</option>
+                <option value="bottes-bottines" class="text-center">bottes/bottines</option>
+                <option value="traditionnel-africain" class="text-center">traditionnel africain</option>
+                <option value="coquettes-talons-escarpins" class="text-center">coquettes/talons/escarpins</option>
+                <option value="mocassins-richelieux-derbies" class="text-center">mocassins/richelieux/derbies</option>
+                <option value="sandales-nu-pieds-pantoufles-espadrilles" class="text-center">sandales/nu-pieds/pantoufles/espadrilles</option>
+                <option value="autres" class="text-center">autres</option>
+            </select>
+        </div>
+
+        <div id="type_accessoires">
+            <div class="text-muted fs-08 ml-3">type accessoires<span class="text-danger f-w-b">*</span></div>
+            <select name="type" class="form-control mb-2 w-100 fs-08" style="height: 2.5rem;" id="type_accessoires_select" required>
+                <option value="" class="text-center">type d'accessoires</option>
+                <option value="valises" class="text-center">valises</option>
+                <option value="cheveux" class="text-center">cheveux</option>
+                <option value="parfums" class="text-center">parfums</option>
+                <option value="ceinture" class="text-center">ceinture</option>
+                <option value="trousses" class="text-center">trousses</option>
+                <option value="lunettes" class="text-center">lunettes</option>
+                <option value="sacs à  dos" class="text-center">sacs à  dos</option>
+                <option value="sacs à  main" class="text-center">sacs à  main</option>
+                <option value="jouets-enfants" class="text-center">jouets enfants</option>
+                <option value="sacs ordinateur" class="text-center">sacs ordinateur</option>
+                <option value="lunettes-montres" class="text-center">lunettes/montres</option>
+                <option value="bracelets-chaines-bijoux" class="text-center">bracelets/chaines/bijoux</option>
+                <option value="portefeuilles-porte monnaie" class="text-center">portefeuilles/porte monnaie</option>
+                <option value="pochettes-sacoches-trousses" class="text-center">pochettes/sacoches/trousses</option>
+                <option value="autres" class="text-center">autres</option>
+            </select>
+        </div>
+    </section>
+</body>
+</html>

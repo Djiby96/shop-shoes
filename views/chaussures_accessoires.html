@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Des Chaussures et accessoires a vendre à Dakar et au Sénégal</title>
+    <link rel="icon" href="/logo/logo_navbar.jpg" type="image/svg">
+
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="/bootstrap-css-4.5.0/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/fontawesome_5.15.4/css/all.css">
+
+    <!-- my-templates-css -->
+    <link rel="stylesheet" href="/my-templates-css/globalCss.css">
+
+    <!-- my-css -->
+    <link rel="stylesheet" href="/my-css/chaussures_accessoires.css">
+
+    <!-- media-querie -->
+    <link rel="stylesheet" href="/media-querie/mq_chaussures_accessoires.css">
+
+    <!-- my-js -->
+    <script defer src="/my-js/URLQueryString.js"></script>
+    
+    <script defer src="/my-js/chaussures_accessoires.js"></script>
+</head>
+<body>
+    <!-- navbar -->
+    <header>
+        <%- include("./navigation.html") %>
+    </header>
+
+    <!-- section title -->
+    <section class="my-5">
+        <h4 class="bg-primary text-white text-center bx-s-10 br-06 py-3 pl-2 width-30 ml-lg-3 ml-1 m-w-90 px-2" id="title_page">
+            <%if(categorie == 'chaussures'){%>
+                Des gammes de chaussures de qualité
+            <%}else{%>
+                Accessoires pour homme & femme
+            <%}%>
+        </h4>
+    </section>
+
+    <!-- produit list -->
+    <section class="mx-2 mx-lg-4 mb-5">
+        <div>
+            <div class="d-flex justify-content-end mb-3">
+                <div class="ml-4 mr-lg-5">
+                    <div class="text-white pt-2 pb-1 rounded-bottom text-center f-w-b op-06 bg-black fs-07 mb-1" style="clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);">Choix de recherche</div>
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <select name="genre" id="sg" class="mr-2 width-9 br-06 fs-08 cs-p bx-s-2 text-muted mb-2" style="height: 1.5rem;">
+                            <option value="" class="text-center">genre</option>
+                            <option value="homme" class="text-center">homme</option>
+                            <option value="femme" class="text-center">femme</option>
+                            <option value="homme-femme" class="text-center">homme & femme</option>
+                            <option value="enfant-bebe" class="text-center">enfant & bebe</option>
+                        </select>
+                        <select name="type" id="stc" class="mr-2 width-9 br-06 fs-08 cs-p bx-s-2 text-muted d-none" style="height: 1.5rem;">
+                            <option value="" class="text-center">tous les chaussures</option>
+                            <option value="basket-sport" class="text-center">basket/sport</option>
+                            <option value="bottes-bottines" class="text-center">bottes/bottines</option>
+                            <option value="traditionnel-africain" class="text-center">traditionnel africain</option>
+                            <option value="coquettes-talons-escarpins" class="text-center">coquettes/talons/escarpins</option>
+                            <option value="mocassins-richelieux-derbies" class="text-center">mocassins/richelieux/derbies</option>
+                            <option value="sandales-nu-pieds-pantoufles-espadrilles" class="text-center">sandales/nu-pieds/pantoufles/espadrilles</option>
+                            <option value="autres" class="text-center">autres</option>
+                        </select>
+                        <select name="type" id="sta" class="mr-2 width-9 br-06 fs-08 cs-p bx-s-2 text-muted d-none" style="height: 1.5rem;"> 
+                            <option value="" class="text-center">type d'accessoires</option>
+                            <option value="valises" class="text-center">valises</option>
+                            <option value="cheveux" class="text-center">cheveux</option>
+                            <option value="parfums" class="text-center">parfums</option>
+                            <option value="ceinture" class="text-center">ceinture</option>
+                            <option value="lunettes" class="text-center">lunettes</option>
+                            <option value="sacs à  dos" class="text-center">sacs à  dos</option>
+                            <option value="sacs à  main" class="text-center">sacs à  main</option>
+                            <option value="jouets-enfants" class="text-center">jouets enfants</option>
+                            <option value="sacs ordinateur" class="text-center">sacs ordinateur</option>
+                            <option value="lunettes-montres" class="text-center">lunettes/montres</option>
+                            <option value="bracelets-chaines-bijoux" class="text-center">bracelets/chaines/bijoux</option>
+                            <option value="portefeuilles-porte monnaie" class="text-center">portefeuilles/porte monnaie</option>
+                            <option value="pochettes-sacoches-trousses" class="text-center">pochettes/sacoches/trousses</option>
+                            <option value="autres" class="text-center">autres</option>
+                        </select>
+                        <select name="prix" id="sp" class="br-06 width-9 fs-08 cs-p bx-s-2 text-muted" style="height: 1.5rem;">
+                            <option value="" class="text-center">prix</option>
+                            <option value="asc" class="text-center">du - chér au + chér</option>
+                            <option value="desc" class="text-center">du + chér au - chér</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <%if(products.length >=1){%>
+                <div class="center mb-3">
+                    <%products.forEach((product) =>{%>
+                        <a href="/<%=categorie%>/<%=product.titre_concat%>-<%=product.numero%>" class="link_product bx-s-2 br-06 border t-d-n m-2 m-lg-3 hover-bx-s-10" title="<%=product.titre%>">
+                            <img src="<%=product.chemin%>" class="img_product w-100 rounded" alt="">
+                            <div class="title_product online-text cl-black text-center fs-075 mt-2 mb-3 px-3 op-08">
+                                <%=product.titre%>
+                            </div>
+                            <h5 class="price_product f-w-b fs-09 text-shadow-1 text-center cl-purple">
+                                <%if(product.prix>0){%>
+                                    <%=product.prix_format%> F CFA
+                                <%}%>
+                            </h5>
+                        </a>
+                    <%})%>
+                </div>
+    
+                <!-- pagination -->
+                <div>
+                    <%- include("./pagination.html") %>
+                </div>
+            <%}else{%>
+                <div class="column-center mt-4">
+                    <p class="text-muted f-w-b fs-085 op-05">
+                        AUCUN PRODUIT TROUVEE !
+                    </p>
+                </div>
+            <%}%>
+
+        </div>
+    </section>
+
+    <!-- service -->
+    <section style="margin-bottom: 10rem;">
+        <%- include("./service.html") %>
+    </section>
+
+
+    <!-- footer -->
+    <section>
+        <%- include("./footer.html") %>
+    </section>
+    
+</body>
+</html>

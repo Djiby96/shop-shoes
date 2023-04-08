@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/logo/logo_navbar.jpg" type="image/svg">
+    <title><%=product.titre%></title>
+    <meta name="description" content="description produit">
+
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="/bootstrap-css-4.5.0/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/fontawesome_5.15.4/css/all.css">
+
+    <!-- my-templates-css -->
+    <link rel="stylesheet" href="/my-templates-css/globalCss.css">
+
+    <!-- my-css -->
+    <link rel="stylesheet" href="/my-css/details_product.css">
+
+    <!-- media-querie css -->
+    <link rel="stylesheet" href="/media-querie/mq_details_product.css">
+
+    <!-- my-js -->
+    <script defer src="/my-js/details_product.js"></script>
+
+    <!-- boostrap js -->
+    <script defer src="/boostrap-js-4.5.0/jquery-3.4.1.min.js"></script>
+    <script defer src="/boostrap-js-4.5.0/bootstrap.min.js"></script>
+
+    <!-- 1. Whatsapp -->
+    <meta property="og:image" itemprop="image" content="https://shop-shoes.onrender.com<%=product.chemin%>">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="500">
+    <%if(product.prix>0){%>
+        <meta property="og:title" content="<%=product.prix_format%> F CFA">
+    <%}else{%>
+        <meta property="og:title" content="prix sur demande">
+    <%}%>
+    
+    <meta property="og:url" content="https://shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%>">
+    <meta property="og:description" content="<%=product.titre%>">
+
+    <!-- 2. Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <%if(product.prix>0){%>
+        <meta name="twitter:title" content="<%=product.prix_format%> F CFA">
+    <%}else{%>
+        <meta name="twitter:title" content="Prix sur demande">
+    <%}%>
+
+    <meta name="twitter:description" content="<%=product.titre%>">
+    <meta name="twitter:image" itemprop="image" content="https://shop-shoes.onrender.com<%=product.chemin%>">
+    <meta property="twitter:image:width" content="1000">
+    <meta property="twitter:image:height" content="500">
+    <meta name="twitter:url" content="https://shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%>">
+</head>
+<body>
+    <!-- navbar -->
+    <header>
+        <%- include("./navigation.html") %>
+    </header>
+    
+    <!-- display title, img, contacts and share -->
+    <section class="py-5 mb-5"> 
+        <div class="between height-mc" id="container_pc">
+            <div class="m-3 mr-lg-5 w-100">
+                <div class="center">
+                    <h5 id="title_pr" class="text-white bg-black text-center online-text mb-4 bx-s-10 py-3 py-lg-4 px-3 br-07 m-w-90" style="width: 33rem;">
+                        <%=product.titre%>
+                    </h5>
+                </div>
+                <div class="center">
+                    <div id="container_img" class="center position-relative m-w-90" style="width: 50rem; height: 27rem; background-image: url(' <%=product.chemin%>'); background-size: 100% 100%; background-repeat: repeat;">
+                        <div class="position-absolute z-i-1 w-100 h-100 bg-black-rgba-07 br-06" id="tr_cl"></div>
+                        <img src=" <%=product.chemin%>" class="z-i-2 m-w-85 br-07 bg-white bx-s-10" id="img_dt" alt="<%=product.titre%>" title=" <%=product.titre%>" style="max-height: 85% !important;">
+                    </div>
+                </div>
+                <div class="center mb-5">
+                    <%for(let i = 1; i<=product.nombre_images; i++){%>
+                        <img src="<%=product.chemin.substring(0, product.chemin.lastIndexOf('_') + 1) + i + '.jpg'%>" class="imgs_dt m-2 br-06 bx-s-6 width-5 height-5 cs-p hover-op-05" alt="<%=product.titre%>" title="<%=product.titre%>">
+                    <%}%>
+                </div>
+                <div class="between mx-3 mb-4">
+                    <%if(product.prix>0){%>
+                        <h1 class="p-3 px-lg-5 bg-orangered text-white br-05 bx-s-10 f-w-b" style="font-size: 1.1rem;">
+                            <%=product.prix_format%> F CFA
+                        </h1>
+                    <%}else{%>
+                        <h1 class="p-3 px-lg-5 bg-orangered text-white br-05 bx-s-10 fs-09 f-w-b">prix sur demande</h1>
+                    <%}%>
+                    <span class="text-muted fs-07 f-w-b mt-3 op-06 t-d-u">
+                        N : <%=numero%>
+                    </span>
+                </div>
+                <div class="mb-4">
+                    <h5 class="ml-3 text-muted op-05">Description</h5>
+                    <p class="text-muted px-lg-3 op-07" style="font-size: 1.1rem;">
+                       <%=product.description%>
+                    </p>
+                </div>
+                <!-- <div class="ml-2">
+                    <a href="">
+                        <button class="br-06 bg-danger op-04 py-1 px-3 fs-075 hover-op-1 text-white">Suprimer ce produit</button>
+                    </a>
+                </div> -->
+            </div>
+            <div class="m-3 border mr-lg-5 m-w-95 height-mc bx-s-10 pb-5 br-06 mt-5" style="width: 35rem;">
+                <div class="bg-primary text-white py-3 px-3 text-center f-w-b br-06 bx-s-10" style="font-size: 1.4rem;">
+                    <i class="fas fa-user"></i>
+                    Contactez & Achetez via
+                    <i class="fas fa-hand-point-down"></i>
+                </div>
+                <div class="column-center mt-5">
+                    <a href="https://wa.me/+221777781562?text=https://shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%> %0a%0a Salut ! je suis intéressé(e) par votre <%=categorie%> ?" class="link_number mb-3">
+                        <button class="br-06 bg-greened py-2 bx-s-10 text-white width-12 fs-075 out-n border-0">
+                            <i class="fab fa-whatsapp"></i>
+                            Whatsapp
+                        </button>
+                    </a>
+                    <a href="tel:+221777781562" class="link_number mb-3">
+                        <button class="br-06 bg-primary py-2  bx-s-10 text-white width-12 fs-075 out-n border-0">
+                            <i class="fas fa-phone"></i>
+                            Appels
+                        </button>
+                    </a>
+                    <a href="sms:+221777781562?body=shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%> %0a%0a Salut ! je suis intéressé(e) par votre <%=categorie%> ?" class="link_number mb-3">
+                        <button class="br-06 bg-secondary py-2  bx-s-10 text-white width-12 fs-075 out-n border-0">
+                            <i class="fas fa-envelope"></i>
+                            Messagerie
+                        </button>
+                    </a>
+                </div>
+                <div class="fs-095 op-09 mt-4 ml-3 text-muted">
+                    <div>
+                        <i class="fas fa-motorcycle"></i>
+                        Possibilite de livraison
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-door-open"></i>
+                        Support 7j/7, 24h/24
+                    </div>
+                    <div>
+                        <i class="fas fa-bus"></i>
+                        Bus passant chez nous : <span class="f-w-b fs-09 text-primary">27, 45, 30, 101</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column-center mt-4">
+            <h5 class="text-shadow-1 mb-3">Partagez cet article avec vos ami(e)s :</h5>
+            <div class="horizontal-center">
+                <a href="https://m.facebook.com/sharer.php?u=https://shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%>&text=<%=product.description%>" class="mx-2">
+                    <img src="/logo/f.jpg" alt="" class="width-3 height-3 bx-s-10 br-06">
+                </a>
+                <a href="https://wa.me/?text=https://shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%> %0a%0a*<%=product.titre%>*" class="mx-2">
+                    <img src="/logo/w.jpg" alt="" class="width-3 height-3 bx-s-10 br-06">
+                </a>
+                <a href="https://twitter.com:/intent/tweet?text=<%=product.titre%>&url=https://shop-shoes.onrender.com/<%=categorie%>/<%=titre_numero%>" class="mx-2">
+                    <img src="/logo/t.jpg" alt="" class="width-3 height-3 bx-s-10 br-06">
+                </a>
+                <a href="" class="mx-2 d-none">
+                    <img src="/logo/tt.jpg" alt="" class="width-3 height-3 bx-s-10 br-06">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <%if(sim_products.length>=1){%>
+        <!-- Articles similaires -->
+        <section>
+            <div class="mb-3">
+                <h2 class="text-shadow-1 text-muted ml-4 ml-lg-5 op-05">Articles similaires</h2>
+            </div>
+            <div class="center">
+                <%sim_products.forEach((product) =>{%>
+                    <a href="/<%=product.categorie%>/<%=product.titre_concat%>-<%=product.numero%>" class="li_si bx-s-2 br-06 border t-d-n m-2 m-lg-3 hover-bx-s-10" title="<%=product.titre%>">
+                        <img src="<%=product.chemin%>" class="img_si w-100" alt="<%=product.titre%>">
+                        <div class="ti_si text-muted online-text text-center fs-085 mt-2 mb-3 px-3">
+                            <%=product.titre%>
+                        </div>
+                        <h5 class="pri_si f-w-b fs-09 text-center cl-purple">
+                            <%if(product.prix>0){%>
+                                <%=product.prix_format%> F CFA
+                            <%}%>
+                        </h5>
+                    </a>
+                <%})%>
+            </div>
+        </section>
+    <%}%>
+
+
+    <!-- footer -->
+    <section style="margin-top: 10rem;">
+        <%- include("./footer.html") %>
+    </section>
+</body>
+</html>

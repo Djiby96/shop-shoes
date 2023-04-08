@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nous sommes une entreprise spécialisée dans la vente de chaussures et d'accessoires de qualité pour hommes & femmes au SENEGALl. L'UN DES MEILLEURS de la sous-region, nous vendons plusieurs types de marque de chaussures et d'accessoires pour tous vos besoins.">
+    <link rel="icon" href="/logo/logo_navbar.jpg" type="image/svg">
+    <title>Chaussures et accessoires a vendre a Dakar et au Sénégal</title>
+
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="/bootstrap-css-4.5.0/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/fontawesome_5.15.4/css/all.css">
+
+    <!-- my-templates-css -->
+    <link rel="stylesheet" href="/my-templates-css/globalCss.css">
+
+    <!-- my-css -->
+    <link rel="stylesheet" href="/my-css/accueil.css">
+
+    <!-- media-querie -->
+    <link rel="stylesheet" href="/media-querie/mq_accueil.css">
+
+    <!-- boostrap js -->
+    <script defer src="/boostrap-js-4.5.0/jquery-3.4.1.min.js"></script>
+    <script defer src="/boostrap-js-4.5.0/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <!-- navbar -->
+    <header>
+        <%- include("./navigation.html") %>
+    </header>
+
+    <!-- carousel -->
+    <section class="mb-5">
+        <%- include("./carousel.html") %>
+    </section>
+
+    <!-- Nouveaute section (10 produits seulement)-->
+    <section style="margin-bottom: 5rem;">
+        <div class="center mb-4">
+            <div class="bx-s-10 br-07 bg-white py-4 px-5 f-f-cursive" id="tn">
+                <i class="fab fa-shopify"></i>
+                Nouveautés
+            </div>
+        </div>
+
+        <div class="center">
+            <%if(products.length >=1){%>
+                <%products.forEach((product) =>{%>
+                    <a href="/<%=product.categorie%>/<%=product.titre_concat%>-<%=product.numero%>" class="link_product bx-s-2 br-06 border t-d-n m-2 m-lg-3 hover-bx-s-10" title="<%=product.titre%>">
+                        <img src="<%=product.chemin%>" class="img_product w-100" alt="">
+                        <div class="title_product text-muted text-center fs-075 mt-2 mb-3 px-3">
+                            <%=product.titre%>
+                        </div>
+                        <h5 class="price_product f-w-b fs-09 text-center cl-purple">
+                            <%if(product.prix>0){%>
+                                <%=product.prix_format%> F CFA
+                            <%}%>
+                        </h5>
+                    </a>
+                <%})%>
+            <%}else{%>
+                <a href="" class="link_product bx-s-2 br-06 border t-d-n m-2 m-lg-3 hover-bx-s-10" title="">
+                    <img src="/website/default_product.jpg" class="img_product w-100" alt="">
+                    <div class="title_product text-muted text-center fs-075 mt-2 mb-3 px-3">
+                        chaussures bottes a vendre au Senegal
+                    </div>
+                    <h5 class="price_product f-w-b fs-09 text-center cl-purple">
+                        10 000 F CFA
+                    </h5>
+                </a>
+            <%}%>
+        </div>
+
+        <h1 class="center mt-4">
+            <a href="/chaussures" class="f-w-b cl-blue text-shadow-1" id="vr">
+                <i class="fas fa-hand-point-right"></i>
+                Voir toutes nos ventes ici ...
+            </a>
+        </h1>
+    </section>
+
+    <!-- service -->
+    <section>
+        <%- include("./service.html") %>
+    </section>
+
+    <!-- Collections -->
+    <section class="mb-5">
+        <div class="center">
+            <h5 class="bx-s-10 br-07 bg-primary text-white py-4 px-5 f-w-b f-f-cursive mb-5" id="cl">
+                <i class="fas fa-female"></i>
+                Nos collections
+                <i class="fas fa-male"></i>
+            </h5>
+        </div>
+        <div id="cl_bg" class="center position-relative">
+            <div class="position-absolute tr_cl z-i-1 w-100 h-100 bg-black-rgba-05"></div>
+            <div class="center w-75 h-100 py-5" id="container_cl_bl">
+                <a href="/chaussures?genre=homme" class="cl_bl bx-s-10 br-07 border m-2 m-lg-4 t-d-n column-center m-w-90 bg-white z-i-2 px-2">
+                    <div class="ml-2">
+                        <div class="mb-2 column-center">
+                            <i class="ft_ic fas fa-male mb-1 cl-purple"></i>
+                            <h4 class="f-f-cursive px-2 width-mc fs-09 f-w-b cl-purple">HOMME</h4>
+                        </div>
+                        <p class="fs-09 text-muted">
+                            Nous vendons des chaussures et accessoires hommes de bonnes marques et de qualité.
+                            Une variété de chaussures : chaussures de bureau, événements, de SPORT, à la maison, à l’ecole,  
+                            à l’universite et des chaussures simples pour vos déplacements ordinaires à des prix moins chers. 
+                        </p>
+                    </div>
+                </a>
+                <a href="/chaussures?genre=femme" class="cl_bl bx-s-10 br-07 border m-2 m-lg-4 t-d-n column-center text-white m-w-90 bg-white z-i-2 px-2">
+                    <div class="ml-2">
+                        <div class="mb-2 column-center">
+                            <i class="ft_ic fas fa-female mb-1 cl-greened"></i>
+                            <h4 class="f-f-cursive px-2 width-mc fs-09 f-w-b cl-greened">FEMME</h4>
+                        </div>
+                        <p class="fs-09 text-muted">
+                            Des chaussures et accessoires pour femme disponible dans notre magasin. 
+                            Des chassures et accessoires très jolies pour tous vos événements, baptême, mariage, soirée, dîné de gala, anniversaire …
+                        </p>
+                    </div>
+                </a>
+                <a href="/accessoires" class="cl_bl bx-s-10 br-07 border m-2 m-lg-4 t-d-n column-center text-white m-w-90 bg-white z-i-2 px-2">
+                    <div class="z-i-1 ml-2">
+                        <div class="mb-2 column-center">
+                            <i class="ft_ic fab fa-shopify mb-1 cl-chocolated"></i>
+                            <h4 class="f-f-cursive px-2 width-mc fs-09 f-w-b cl-chocolated">ACCESSOIRES</h4>
+                        </div>
+                        <p class="fs-09 text-muted">
+                            Des ACCESSOIRES pour homme & femme, plusieurs variétés d’accessoires utiles à votre disposition pour les besoins de la maisons, 
+                            pour vous rendre beaucoup plus jolies et de vous facilitez le déplacement.
+                            Découvrez tous nos accessoires dans le menu accessoires.
+                        </p>
+                    </div>
+                </a>
+                <a href="/chaussures?genre=enfant-bebe" class="cl_bl br-07 border m-2 m-lg-4 t-d-n column-center text-white m-w-90 bg-white z-i-2 px-2 ">
+                    <div class="ml-2">
+                        <div class="mb-2 column-center">
+                            <i class="ft_ic fas fa-people-arrows mb-1 cl-black"></i>
+                            <h4 class="f-f-cursive px-2 width-mc fs-085 f-w-b cl-black">ENFANT & BEBE</h4>
+                        </div>
+                        <p class="fs-09 text-muted">
+                            Même les enfants en font partie, Nous offrons des chaussures et accessoires pour les enfants et les bébés de tous les ages.  
+                            Des accessoires et chaussures très jolies à faire porter à vos enfants facilement et qui vous permettront de gagner du temps. 
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adresse & contact -->
+    <section>
+
+        <div class="center">
+            <h5 class="colum-center px-4 px-lg-5 py-4 text-white text-center br-06 f-w-b bx-s-10 height-5 mb-5 bg-black" style="font-size: 1.6rem;">
+                <span>Nos coordonnées</span>
+                <i class="fas fa-hand-point-down"></i>
+            </h5>
+        </div>
+
+        <div class="center bg-light pt-3 br-09" style="padding-bottom: 10rem;">
+            <div class="column-center m-3 m-lg-4">
+                <span class="text-muted mb-2 op-06">Contacts</span>
+                <div class="ac bg-white br-08 bx-s-10 px-2 text-shadow-1 pt-4 m-w-90 fs-095">
+                    <div class="mb-2">
+                        <i class="fas fa-phone"></i>
+                        77 778 15 62
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-phone"></i>
+                        76 564 26 01
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-phone"></i>
+                        70 563 67 87
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-envelope"></i>
+                        shop.shoes@gmail.com
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-phone"></i>
+                        whatsapp : 77 778 15 62
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-center m-3 m-lg-4">
+                <span class="text-muted mb-2 op-06">Adresse & Horaires</span>
+                <div class="ac bg-white br-08 bx-s-10 px-2 text-shadow-1 pt-4 m-w-90 fs-095">
+                    <div class="mb-2">
+                        <i class="fas fa-home"></i>
+                        Station Keur Massar en face Banque CEDEAO
+                    </div>
+                    <div class="mb-2">
+                        <div>
+                            <i class="fas fa-clock"></i>
+                            Horaires
+                        </div>
+                        <div class="ml-3">
+                            <div class="">Lun - Ven : 08h - 21h</div>
+                            <div class="">Sam : 09 -21h</div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-bus"></i>
+                        Bus passant chez nous : 27, 47, 101, 29
+                    </div>
+                </div>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <section>
+        <%- include("./footer.html") %>
+    </section>
+</body>
+</html>

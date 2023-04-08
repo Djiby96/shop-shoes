@@ -1,0 +1,14 @@
+*{
+    margin: 0;padding: 0;box-sizing: border-box;
+}
+
+/* <!-- produit list --> */
+.link_product{
+    width: 14rem; height: 17rem;
+}
+.link_product:hover{
+    transform: scale(1.1); transition: 1s all;
+}
+.img_product{
+    height: 10rem;
+}

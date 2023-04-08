@@ -1,0 +1,39 @@
+*{
+    margin: 0;padding: 0;box-sizing: border-box;
+}
+
+/*  <!-- Nouveaute section --> */
+#tn{
+    font-size: 3rem;
+}
+.link_product{
+    width: 16rem; height: 19rem;
+}
+.img_product{
+    height: 12rem;
+}
+#vr{
+    font-size: 1.5rem;
+}
+
+/* <!-- Collections --> */
+#cl{
+    font-size: 2rem; 
+}
+#cl_bg{
+    background-image: url('/website/bg_collections.jpg'); background-size: 100% 100%;
+}
+.cl_bl{
+    width: 20rem; height: 17rem;
+}
+.cl_bl:hover{
+    transform: scale(1.1); transition: 0.5s all;
+}
+.ft_ic{
+    font-size: 2.5rem;
+}
+
+/* Adresse & Contacts */
+.ac{
+    width: 25rem; height: 20rem;
+}

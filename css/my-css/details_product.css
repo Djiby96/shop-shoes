@@ -1,0 +1,17 @@
+*{
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+/* contacts proprio */
+.link_number:hover{
+    transform: scale(1.2);
+}
+
+/* Articles similaires */
+.li_si{
+    width: 14rem; height: 15rem;
+}
+.img_si{
+    height: 10rem;
+}
+

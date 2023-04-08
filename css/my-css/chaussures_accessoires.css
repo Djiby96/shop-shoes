@@ -1,0 +1,24 @@
+*{
+    margin: 0;padding: 0;box-sizing: border-box;
+}
+
+/*  <!-- section title --> */
+#title_page{
+    font-size: 1.3rem; clip-path: polygon(93% 0%, 100% 50%, 93% 100%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+/* <!-- produit list --> */
+.link_product{
+    width: 14rem; height: 15rem;
+}
+.link_product:hover{
+    transform: scale(1.1); transition: 1s all;
+}
+.img_product{
+    height: 10rem;  
+}
+
+/* <!-- produit list --> */
+#genre_select, #search_price{
+    width: 7rem; height: 1.6rem;
+}
